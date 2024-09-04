@@ -18,22 +18,40 @@ char getSoundexCode(char character) {
 }
 
 
+char getSoundexCode(char c) {
+    c = std::toupper(c);
+    auto it = soundexCodes.find(c);
+    return (it != soundexCodes.end()) ? it->second : '0';
+}
+
+void appendSoundexCode(std::string& soundex, char code, char& prevCode) {
+    if (code != '0' && code != prevCode) {
+        soundex += code;
+        prevCode = code;
+    }
+}
+
+std::string processInitialCharacter(const std::string& name) {
+    std::string soundex;
+    soundex += std::toupper(name[0]);
+    return soundex;
+}
+
+void processRemainingCharacters(const std::string& name, std::string& soundex) {
+    char prevCode = getSoundexCode(name[0]);
+
+    for (size_t i = 1; i < name.length() && soundex.length() < 4; ++i) {
+        char code = getSoundexCode(name[i]);
+        appendSoundexCode(soundex, code, prevCode);
+    }
+}
+
 std::string generateSoundex(const std::string& name) {
     if (name.empty()) return "";
 
-    std::string soundex(1, toupper(name[0]));
-    char previousCode = getSoundexCode(name[0]);
+    std::string soundex = processInitialCharacter(name);
+    processRemainingCharacters(name, soundex);
 
-    for (size_t i = 1; i < name.length() && soundex.length() < 4; ++i) 
-    {
-        char currentCode = getSoundexCode(name[i]);
-        if (currentCode != '0' && currentCode != previousCode)
-        {
-            soundex += currentCode;
-            previousCode = currentCode;
-        }
-    }
     soundex.resize(4, '0');
-
     return soundex;
 }
