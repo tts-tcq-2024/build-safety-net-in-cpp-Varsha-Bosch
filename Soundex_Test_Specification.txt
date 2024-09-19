@@ -1,0 +1,59 @@
+Test Items
+
+The item under test is the generateSoundex function, which is responsible for converting a given name into its corresponding Soundex code.                                           
+
+Test case1:  handling an empty string in the Soundex algorithm.
+TestCase ID	TC1
+Input	“”
+Expected Output	""
+
+Test case2 : Tests that a single character generates a Soundex code with the character followed by zeros.
+TestCase ID	TC2
+Input	"A"
+Expected Output	"A000"
+
+Test Case 3: Ensures that duplicate characters are skipped, and a valid Soundex code is generated, with proper handling of repeated sounds.
+TestCase ID	TC3
+Input	"AABBBB"
+Expected Output	"A100"
+
+TestCase 4: Tests that the Soundex algorithm properly handles mixed-case input, converting everything to uppercase and generating the correct Soundex code.
+TestCase ID	TC4
+Input	"McDonald"
+Expected Output	"M235"
+
+TestCase 5: Verifies that non-alphabetic characters are ignored in the Soundex generation and do not affect the result.
+TestCase ID	TC5
+Input	"John123"
+Expected Output	"J500"
+
+TestCase 6: Ensures that long input strings are processed correctly, generating the proper 4-character Soundex code.
+TestCase ID	TC6
+Input	“Washington”
+Expected Output	"W252"
+
+TestCase 7 : Verifies that short input strings are correctly padded with zeros to produce a 4-character Soundex code.
+TestCase ID	TC7
+Input	"Li"
+Expected Output	"L000"
+
+TestCase 8: Confirms that the Soundex algorithm always produces exactly four characters in the result, even when the input is longer.
+TestCase ID	TC8
+Input	"Ashcraft"
+Expected Output	"A261"
+
+TestCase 9 : Ensures that vowels and other characters that map to zero in Soundex are skipped correctly, with the initial character followed by zeros.
+TestCase ID	TC9
+Input	"AEIOU"
+Expected Output	"A000"
+
+TestCase 10: Tests that characters with the same Soundex code produce only one digit in the result, followed by zeros.
+TestCase ID	TC10
+Input	"BFPV"
+Expected Output	"B000"
+
+TestCase 11: Confirms that the Soundex algorithm skips characters that map to zero or are considered "silent" (e.g., 'h', 'w', 'y').
+TestCase ID	TC11
+Input	"Aeiouhwy"
+Expected Output	"A000"
+
