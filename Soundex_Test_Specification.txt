@@ -1,17 +1,16 @@
-Test Items:
-The item under test is the generateSoundex function which is responsible for converting a given name into its corresponding Soundex code.
+Test Items
 
+The item under test is the generateSoundex function, which is responsible for converting a given name into its corresponding Soundex code.                                           
+
+Test case1:  handling an empty string in the Soundex algorithm.
 TestCase ID	TC1
 Input	“”
 Expected Output	""
-Test case1:  handling an empty string in the Soundex algorithm.
 
-
+Test case2 : Tests that a single character generates a Soundex code with the character followed by zeros.
 TestCase ID	TC2
 Input	"A"
 Expected Output	"A000"
-Test case2 : Tests that a single character generates a Soundex code with the character followed by zeros.
-
 
 Test Case 3: Ensures that duplicate characters are skipped, and a valid Soundex code is generated, with proper handling of repeated sounds.
 TestCase ID	TC3
